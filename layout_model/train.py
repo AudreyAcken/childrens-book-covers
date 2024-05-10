@@ -75,8 +75,8 @@ with open("childrens_books_dataset.jsonl", "w") as f:
 
 print("Dataset creation complete.")
 
-# Custom Dataset class to handle separate title and description
-class CustomDataset(Dataset):
+# Dataset class to handle separate title and description
+class Covers(Dataset):
     def __init__(self, data_file):
         self.data = []
         with open(data_file, "r") as f:
@@ -159,7 +159,7 @@ class BoundingBoxPredictor(nn.Module):
 # Training Parameters
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = BoundingBoxPredictor().to(device)
-dataset = CustomDataset("childrens_books_dataset.jsonl")
+dataset = Covers("childrens_books_dataset.jsonl")
 data_loader = DataLoader(dataset, batch_size=4, shuffle=True, collate_fn=collate_fn)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 criterion = nn.MSELoss()
