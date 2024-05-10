@@ -4,16 +4,8 @@ This repository includes a fine-tuned T5 model optimized for generating book tit
 The model is hosted on Google Drive and can be accessed directly from Google Colab.
 
 
-## Step 1: Mount Google Drive
 
-First, mount your Google Drive in the Colab notebook to access the model file:
-
-```python
-from google.colab import drive
-drive.mount('/content/drive')
-```
-
-## Step 2: Download and Unzip the Model
+## Step 1: Download and Unzip the Model
 
 The model `best_model.zip` is available via a shared Google Drive link. Use the following commands in your Colab notebook to download and unzip the model:
 
@@ -22,7 +14,9 @@ The model `best_model.zip` is available via a shared Google Drive link. Use the 
 !unzip best_model.zip
 ```
 
-## Step 3: Load the model and tokenizer
+If gdown is not working, this is the link to download the model: https://drive.google.com/uc?id=16RJZ6Obc91_Upl4W32cAqHlfe48nVCa-
+
+## Step 2: Load the model and tokenizer
 ```python
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
@@ -33,7 +27,7 @@ tokenizer = T5Tokenizer.from_pretrained('t5-base')
 ```
 
 
-## Step 4: Use this function to generate title
+## Step 3: Use this function to generate title
 
 ```python
 # Function to generate title
