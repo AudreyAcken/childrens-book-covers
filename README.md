@@ -18,7 +18,7 @@ drive.mount('/content/drive')
 The model `best_model.zip` is available via a shared Google Drive link. Use the following commands in your Colab notebook to download and unzip the model:
 
 ```bash
-!gdown 1qr1GZYUpuVl9Wu7rtf3BF3Xk9HG4ydmW -O best_model.zip
+!gdown https://drive.google.com/uc?id=16RJZ6Obc91_Upl4W32cAqHlfe48nVCa- -O best_model.zip
 !unzip best_model.zip
 ```
 
