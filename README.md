@@ -41,3 +41,42 @@ description = "The book is about 11 year old Harry Potter, who receives a letter
 title = generate_title(description, model, tokenizer, device)
 print("Generated Book Title:", title)
 ```
+
+## Step 4: Clone the official TextDiffuser Repo and Install Requirements
+
+```bash
+git clone https://github.com/microsoft/unilm.git
+```
+
+Follow the installation requirements at https://github.com/microsoft/unilm/tree/master/textdiffuser
+
+## Step 5: Download the Fine-tuned Diffusion Model
+
+For now, you must be signed into your Columbia account to access the model. 
+
+```
+!gdown https://drive.google.com/uc?id=12gbVE4-Qm25smjgl27oGVRmSg3b_buq4 -O diffusion_fine_tune.zip
+!unzip diffusion_fine_tune.zip
+
+If gdown is not working, this is the link to download the model: https://drive.google.com/uc?id=12gbVE4-Qm25smjgl27oGVRmSg3b_buq4
+
+```
+Place the model under the '''textdiffuser-ckpt''' folder.
+
+## Step 6: Load the Layout Model
+
+
+
+## Step 7: Run the inference code
+```bash
+CUDA_VISIBLE_DEVICES=0 python inference.py \
+  --mode="text-to-image" \
+  --resume_from_checkpoint="textdiffuser-ckpt/diffusion_backbone" \
+  --pretrained_model_name_or_path="textdiffuser-ckpt/diffusion_fine_tune"
+  --prompt="A sign that says 'Hello'" \
+  --output_dir="./output" \
+  --vis_num=4
+```
+
+
+
