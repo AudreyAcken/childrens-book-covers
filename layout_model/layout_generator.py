@@ -1,9 +1,6 @@
 # ------------------------------------------
-# TextDiffuser: Diffusion Models as Text Painters
-# Paper Link: https://arxiv.org/abs/2305.10855
-# Code Link: https://github.com/microsoft/unilm/tree/master/textdiffuser
+# Adapted from TextDiffuser: Diffusion Models as Text Painters
 # Copyright (c) Microsoft Corporation.
-# This file aims to predict the layout of keywords in user prompts.
 # ------------------------------------------
 
 import warnings
