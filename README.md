@@ -80,6 +80,16 @@ Place the model under the ```textdiffuser-ckpt``` folder.
 
 ## Step 6: Load the Layout Model
 
+Replace with the TextDiffuser layout generator file with our layout generator file. Also, move our layout generation inference code to the same folder.
+
+To do this, you can run the following command:
+
+```bash
+cp ./text-images/layout_model/layout_generator.py ./unilm/textdiffuser/model/layout_generator.py
+mv ./text-images/layout_model/inference_layout.py ./unilm/textdiffuser/model/
+```
+
+This step is necessary in ensuring that the inference code will use our layout generator.
 
 ## Step 7: Run the inference code
 
