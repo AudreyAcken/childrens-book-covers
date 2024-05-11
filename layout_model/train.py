@@ -4,6 +4,26 @@ from torch.utils.data import DataLoader
 from torch.optim import Adam
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
+import torch
+from torch.utils.data import Dataset
+import json
+
+class BooksDataset(Dataset):
+    def __init__(self, jsonl_file):
+        self.entries = []
+        with open(jsonl_file, 'r') as file:
+            for line in file:
+                data = json.loads(line.strip())
+                self.entries.append(data)
+
+    def __len__(self):
+        return len(self.entries)
+
+    def __getitem__(self, idx):
+        entry = self.entries[idx]
+        text = entry['title'] + " " + entry['description']
+        bounding_boxes = torch.tensor(entry['bounding_boxes'], dtype=torch.float32).view(-1, 8)  # Flattened to [num_boxes, 8]
+        return text, bounding_boxes
 
 class BoundingBoxPredictor(nn.Module):
     def __init__(self, max_boxes=10):
