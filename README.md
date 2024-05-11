@@ -58,7 +58,6 @@ Follow the installation requirements at https://github.com/microsoft/unilm/tree/
 !unzip diffusion_fine_tune.zip
 ```
 
-
 If gdown is not working, this is the link to download the model: https://drive.google.com/uc?id=1s9Ss44TWi8etxiCLMUp04vMxSnpcm75L
 
 Place the model under the ```textdiffuser-ckpt``` folder.
@@ -77,5 +76,5 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
   --vis_num=4
 ```
 
-
-
+## Step 8 (Optional): Explore the Textual Inversion Model
+Access the textual inversion inference code ```experiments/textual-inversion-inference.ipynb``` under the experiments folder. You can download the notebook file and modify the prompt. For example, the current prompt is ```prompt = "a children's book cover in the style of <dr-seuss-book-cover>"```. Ensure that you include the learned vocabulary <dr-seuss-book-cover> in your prompt. The current loaded concept is <dr-seuss-book-cover>, but you may also explore with other concepts at https://huggingface.co/sd-concepts-library.
