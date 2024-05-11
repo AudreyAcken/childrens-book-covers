@@ -151,23 +151,17 @@ def get_layout_from_prompt(args):
     right_shifted_boxes = torch.cat([padding, boxes[:,0:-1,:]],1) # (1, 8, 4)
    
     # inference
+
+    ##we replace the original textdiffuser layout generator code in this part with our bounding box code
     return_boxes= []
     with torch.no_grad():
-        for box_index in range(boxes_length):
-            
-            if box_index == 0:
-                encoder_embedding = None
-                
-            output, encoder_embedding = model(text_embedding, length_list, width_list, mask, state_list, word_match_list, target, right_shifted_boxes, train=False, encoder_embedding=encoder_embedding) 
-            output = torch.clamp(output, min=0, max=1) # (1, 8, 4)
-            
-            # add overlap detection
-            output = adjust_overlap_box(output, box_index) # (1, 8, 4)
-            
-            right_shifted_boxes[:,box_index+1,:] = output[:,box_index,:]
-            xmin, ymin, xmax, ymax = output[0, box_index, :].tolist()
+        box_predictions = predict_bounding_boxes(prompts, titles, model, processor, device)
+        for each box in boxes:
+            xmin = box[0][0]
+            ymin = box[0][1]
+            xmax = box[1][0]
+            ymax = box[2][1]
             return_boxes.append([xmin, ymin, xmax, ymax])
-            
             
     # print the location of keywords
     print(f'index\tkeyword\tx_min\ty_min\tx_max\ty_max')
