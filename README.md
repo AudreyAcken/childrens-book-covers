@@ -3,7 +3,9 @@
 This repository includes a fine-tuned T5 model optimized for generating book titles based on book descriptions. 
 The model is hosted on Google Drive and can be accessed directly from Google Colab.
 
+It also includes instructions to download a layout generator model and a fine-tuned stable diffusion model to generate children's storybook covers. 
 
+The instrutions below explain how to run the full pipeline on your own.
 
 ## Step 1: Download and Unzip the Model
 
