@@ -68,6 +68,9 @@ Place the model under the ```textdiffuser-ckpt``` folder.
 
 
 ## Step 7: Run the inference code
+
+The following command line prompt will run the inference code. Please replace the prompt with your desired prompt. For the specific application of children's storybook covers, you can try a prompt of the format as "A children's storybook cover with the title [insert title here]". Given a summary of the book, this title may be obtained from the fine-tuned T5 model. 
+
 ```bash
 CUDA_VISIBLE_DEVICES=0 python inference.py \
   --mode="text-to-image" \
