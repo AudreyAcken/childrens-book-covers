@@ -52,19 +52,18 @@ Follow the installation requirements at https://github.com/microsoft/unilm/tree/
 
 ## Step 5: Download the Fine-tuned Diffusion Model
 
-For now, you must be signed into your Columbia account to access the model. 
 
 ```
-!gdown https://drive.google.com/uc?id=12gbVE4-Qm25smjgl27oGVRmSg3b_buq4 -O diffusion_fine_tune.zip
+!gdown https://drive.google.com/uc?id=1s9Ss44TWi8etxiCLMUp04vMxSnpcm75L -O diffusion_fine_tune.zip
 !unzip diffusion_fine_tune.zip
-
-If gdown is not working, this is the link to download the model: https://drive.google.com/uc?id=12gbVE4-Qm25smjgl27oGVRmSg3b_buq4
-
 ```
-Place the model under the '''textdiffuser-ckpt''' folder.
+
+
+If gdown is not working, this is the link to download the model: https://drive.google.com/uc?id=1s9Ss44TWi8etxiCLMUp04vMxSnpcm75L
+
+Place the model under the ```textdiffuser-ckpt``` folder.
 
 ## Step 6: Load the Layout Model
-
 
 
 ## Step 7: Run the inference code
