@@ -83,3 +83,5 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
 
 ## Step 8 (Optional): Explore the Textual Inversion Model
 Access the textual inversion inference code ```experiments/textual-inversion-inference.ipynb``` under the experiments folder. You can download the notebook file and modify the prompt. For example, the current prompt is ```prompt = "a children's book cover in the style of <dr-seuss-book-cover>"```. Ensure that you include the learned vocabulary <dr-seuss-book-cover> in your prompt. The current loaded concept is <dr-seuss-book-cover>, but you may also explore with other concepts at https://huggingface.co/sd-concepts-library.
+
+You can also include the title from the fine-tuned T-5 model in the prompt. However, this model has not been combined with the TextDiffuser model yet so the generated image will likely have a misspelled title. 
