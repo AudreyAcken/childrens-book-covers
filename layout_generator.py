@@ -18,6 +18,7 @@ from PIL import Image, ImageDraw, ImageFont
 from util import get_width, get_key_words, adjust_overlap_box, shrink_box, adjust_font_size, alphabet_dic
 from model.layout_transformer import LayoutTransformer, TextConditioner
 from termcolor import colored
+from inference_layout import *
 
 # import layout transformer
 model = LayoutTransformer().cuda().eval()
