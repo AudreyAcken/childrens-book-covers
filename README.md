@@ -35,7 +35,7 @@ tokenizer = T5Tokenizer.from_pretrained('t5-base')
 # Function to generate title
 def generate_title(description, model, tokenizer, device):
     input_ids = tokenizer(description, return_tensors="pt", padding=True, truncation=True, max_length=512).input_ids.to(device)
-    outputs = model.generate(input_ids, max_length=64, num_beams=5, no_repeat_ngram_size=2)
+    outputs = model.generate(input_ids, max_length=10, num_beams=5, no_repeat_ngram_size=2)
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 # Example usage of function to generate a book title
