@@ -33,15 +33,29 @@ tokenizer = T5Tokenizer.from_pretrained('t5-base')
 
 ```python
 # Function to generate title
-def generate_title(description, model, tokenizer, device):
-    input_ids = tokenizer(description, return_tensors="pt", padding=True, truncation=True, max_length=512).input_ids.to(device)
-    outputs = model.generate(input_ids, max_length=10, num_beams=5, no_repeat_ngram_size=2)
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+def generate_book_title(description, model, tokenizer, device):
+    # Prepare the text input by adding the appropriate "generate title:" prefix and encoding it
+    input_text = "generate title: " + description
+    input_ids = tokenizer.encode(input_text, return_tensors="pt", max_length=512, truncation=True).to(device)
+
+    # Generate outputs using the model
+    with torch.no_grad():
+        outputs = model.generate(
+            input_ids,
+            max_length=64,
+            # use beam search
+            num_beams=5,
+            no_repeat_ngram_size=2
+        )
+
+    # Decode the generated id to a string
+    title = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return title
 
 # Example usage of function to generate a book title
 description = "The book is about 11 year old Harry Potter, who receives a letter saying that he is invited to attend Hogwarts, school of witchcraft and wizardry. He then learns that a powerful wizard and his minions are after the sorcerer's stone that will make this evil wizard immortal and undefeatable."
-title = generate_title(description, model, tokenizer, device)
-print("Generated Book Title:", title)
+generated_title = generate_book_title(description, model, tokenizer, device)
+print("Generated Title:", generated_title)
 ```
 
 ## Step 4: Clone the official TextDiffuser Repo and Install Requirements
