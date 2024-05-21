@@ -1,4 +1,4 @@
-# text-images
+# childrens-book-covers
 
 This repository includes a fine-tuned T5 model optimized for generating book titles based on book descriptions. 
 The model is hosted on Google Drive and can be accessed directly from Google Colab.
